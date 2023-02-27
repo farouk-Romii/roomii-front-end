@@ -3,3 +3,9 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+.lpi {  
+    width: 100px; 
+    height: 600px; 
+    
+    }  
