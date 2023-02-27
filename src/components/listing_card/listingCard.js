@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import "./listing_card.css"
 
-function BasicExample(props) {
+function ListingCard(props) {
     const {description,photos,price,location,id,user_id} = props.obj
     console.log(props.obj)
     return (

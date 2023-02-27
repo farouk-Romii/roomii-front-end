@@ -1,16 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbarsec from "../navBar/navBar";
 import Carousel from 'react-bootstrap/Carousel';
-
 import "./landingPage.css";
-import BasicExample from '../listing_card/listingCard';
-
-
-let data = [{description: "room_1", photos: 'https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg',price: '347', location:"Queens",id: 5},
-{description: "room_2", photos: 'https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg',price: '566', location:"Bronx",id: 1},
-{description: "room_3", photos: 'https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg',price: '788', location:"Brooklyn",id: 2},
-{description: "room_4", photos: 'https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg',price: '988', location:"Manhattan",id: 3},
-{description: "room_5", photos: 'https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg,https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/white-minimal-bedroom.jpeg',price: '899', location:"land_lord",id: 4},]
 
 function LandingPage() {
     return (
@@ -75,7 +66,6 @@ function LandingPage() {
                     </div>
                 </div>
             </div>
-            {data.map(list=> <BasicExample obj={list} key={list.id}/>)}
         </div>
     )
 }
