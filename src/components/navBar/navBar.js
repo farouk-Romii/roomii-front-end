@@ -8,11 +8,14 @@ function Navbarsec(){
         <div>
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">Roomii</Navbar.Brand>
+              <Navbar.Brand href="/">Roomii</Navbar.Brand>
               <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">login</Nav.Link>
-                <Nav.Link href="#pricing">Linstings</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/login">login</Nav.Link>
+                <Nav.Link href="/listings">Linstings</Nav.Link>
+                <Nav.Link href="/myListings">MyListings</Nav.Link>
+                <Nav.Link href="/myFavorites">myFavorites</Nav.Link>
+                <Nav.Link href="/logout">logout</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
