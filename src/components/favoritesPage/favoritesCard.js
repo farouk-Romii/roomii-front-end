@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 import "./favoritesCard.css";
 const FavoritesCard = (props) => {
     const [visiblity, setVisiblity] = useState("block")
-    const {description,photos,price,location,id,user_id, setFavs} = props.obj;
-    console.log(setFavs)
+    const {description,photos,price,location,id,user_id} = props.obj;
+   
     const deleteFav = () => {
         fetch(`http://localhost:3100/favorites/remove/${id}/1`, {method: 'DELETE',redirect: 'follow'})
         .then(data => data.json())

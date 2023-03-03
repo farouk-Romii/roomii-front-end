@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import "./listing_card.css"
 import React, { useState,useEffect } from 'react';
-
+import { Link } from "react-router-dom";
 function ListingCard(props) {
     
     const {description,photos,price,location,id,user_id} = props.obj;
@@ -43,7 +43,7 @@ function ListingCard(props) {
             {"Monthly " +'$'+ price}
           </Card.Text>
           <div className='card_b'>
-            <Button variant="primary">View Details</Button>
+            <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
             <Button onClick={() => {addToFav()}} variant="primary">add to favorites</Button>
           </div>
           

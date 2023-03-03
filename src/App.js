@@ -7,6 +7,7 @@ import LoginPage from "./components/loginpage/loginPage";
 import SignUpPage from "./components/signupPage/signUpPage";
 import FavoritesPage from "./components/favoritesPage/favoritesPage";
 import MyListingPage from "./components/myListings/myListingsPage";
+import RoomDetails from "./components/roomlistingdetails.js/roomListingDetails";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path ="/login" element={<LoginPage/>}/>
           <Route path ="/myListings" element={<MyListingPage/>}/>
           <Route path ="/myFavorites" element={<FavoritesPage/>}/>
+          <Route path ="/room/:id" element={<RoomDetails/>}/>
         </Routes>  
       </div>
     </BrowserRouter>

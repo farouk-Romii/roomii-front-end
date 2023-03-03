@@ -28,8 +28,8 @@ const MyListingCard = (props) => {
                         <Button variant="primary">View Details</Button>
                         <Button variant="primary">Edit</Button>
                         <Button onClick={() => {
-                            deleteFav()
-                            setVisiblity("none")
+                            deleteFav();
+                            setVisiblity("none");
                             }}variant="primary">Delete</Button>
                     </div>
                 </Card.Body>
