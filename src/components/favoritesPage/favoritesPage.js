@@ -1,13 +1,16 @@
 import  FavoritesCard from "./favoritesCard";
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import Navbarsec from "../navBar/navBar";
 import "./favoritesCard.css";
+import Context from "../../context/Context";
+
 
 const FavoritesPage =()=> {
+    let data = useContext(Context);
     const [favs,setFavs] = useState(null);
 
     useEffect(()=>{
-        fetch(`http://localhost:3100/favorites/view/1`)
+        fetch(`http://localhost:3100/favorites/view/${data.id}`)
         .then(data => data.json())
         .then((favs) => {
             console.log(favs);

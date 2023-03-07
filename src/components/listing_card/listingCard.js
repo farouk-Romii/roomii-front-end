@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function ListingCard(props) {
     
     const {description,photos,price,location,id,user_id} = props.obj;
-    const [count, setCount] = useState(0)
+  
     const addToFav=()=> {
         console.log("hey")
         const requestOptions = {
@@ -17,7 +17,7 @@ function ListingCard(props) {
         };
         fetch(`http://localhost:3100/favorites/add`,requestOptions)
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => console.log("added to favorites"));
     }
    
     console.log(props.obj)

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -10,14 +10,14 @@ import Navbarsec from "../navBar/navBar";
 const RoomDetails = () => {
     const {id} = useParams();
     const [room,setRoom] = useState(null);
-    useEffect(()=> {
+  
         fetch(`http://localhost:3100/room/view/${id}`)
         .then(data=> data.json())
         .then(room=> {
             console.log(room);
             setRoom(room);
         })
-    },[])
+    
     
     return ( 
         <div className="room-details">
@@ -50,7 +50,8 @@ const RoomDetails = () => {
             </Carousel>
             <div className="des">
                 {room && room.description}
-
+                <br/>
+                {room && room.price}
             </div>
         
         </div> 

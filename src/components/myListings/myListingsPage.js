@@ -1,9 +1,11 @@
 import  MyListingCard from "./myListingCard"
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect ,useContext } from 'react';
 import Navbarsec from "../navBar/navBar";
+import Context from "../../context/Context";
 
 
 const MyListingPage =()=> {
+    let data = useContext(Context);
     const [myRooms,setMyRoom] = useState(null);
 
     useEffect(()=>{
@@ -18,7 +20,7 @@ const MyListingPage =()=> {
         <div>
             <Navbarsec />
             <div className="card-container">
-                {myRooms && myRooms.filter(room=> room.user_id == 1).map((room)=> <MyListingCard obj={room} key={room.id}/>)}
+                {myRooms && myRooms.filter(room=> room.user_id == data.id).map((room)=> <MyListingCard obj={room} key={room.id}/>)}
             </div>
         </div>
     )

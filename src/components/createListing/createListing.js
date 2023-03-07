@@ -1,18 +1,20 @@
 import Navbarsec from '../navBar/navBar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useParams,useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import Context from "../../context/Context";
+import React, {useContext,useState} from 'react';
+import { useNavigate } from "react-router-dom";
 
 
+const CreateListingPage = () => {
+    let data = useContext(Context);
+    const navigate = useNavigate();
 
 
-const ChangeListingPage = () => {
-    const {id} = useParams();
     const [photos,setPhotos] = useState("");
     const [price,SetPrice] = useState("");
-    const [location,setLocation] = useState("");
-    const [description,setDescription] = useState("")
+    const [location,setLocation] = useState("Bronx");
+    const [description,setDescription] = useState("");
 
     const handlePhotos=(e)=> {
         setPhotos(e.target.value);
@@ -27,8 +29,6 @@ const ChangeListingPage = () => {
         setDescription(e.target.value);
     }
 
-    const navigate = useNavigate();
-
     const handleSubmitCreateButton =(e)=> {
         e.preventDefault();
         let raw = JSON.stringify({
@@ -36,14 +36,14 @@ const ChangeListingPage = () => {
             "photos": photos,
             "price": price,
             "location": location,
-            "id": id,
+            "userId": data.id,
         })
         const requestOptions = {
-            method: 'PATCH',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: raw
         };
-        fetch(`http://localhost:3100/room/change`, requestOptions)
+        fetch(`http://localhost:3100/room/add`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log("You've succesfully create a listing");
@@ -52,8 +52,6 @@ const ChangeListingPage = () => {
             })
             .catch(error => console.log('error', error));
     }
-
-
 
     return (
         <div>
@@ -65,17 +63,17 @@ const ChangeListingPage = () => {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Description:</Form.Label>
-                        <Form.Control value={description} onChange={handleDescription}  as="textarea" rows={3} />
+                        <Form.Control value={description} onChange={handleDescription} as="textarea" rows={4} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Photos:</Form.Label>
-                        <Form.Control  value={photos}  onChange={handlePhotos} type="" placeholder="Last Name" />
+                        <Form.Control value={photos}  onChange={handlePhotos} type="" placeholder="Photos" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Price:</Form.Label>
-                        <Form.Control value={price}  onChange={handlePrice}  type="email" placeholder="Enter email" />
+                        <Form.Control value={price}  onChange={handlePrice} type="email" placeholder="Price" />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -88,7 +86,7 @@ const ChangeListingPage = () => {
                         </Form.Select>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    <Button onClick={handleSubmitCreateButton} variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
@@ -99,4 +97,4 @@ const ChangeListingPage = () => {
     );
 }
 
-export default ChangeListingPage;
+export default CreateListingPage;

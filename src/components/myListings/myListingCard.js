@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 
 const MyListingCard = (props) => {
     const [visiblity, setVisiblity] = useState("block")
@@ -22,11 +23,11 @@ const MyListingCard = (props) => {
                 <Card.Body>
                     <Card.Title>{location}</Card.Title>
                     <Card.Text>
-                       {price}
+                        {price}
                     </Card.Text>
                     <div className='card_b'>
-                        <Button variant="primary">View Details</Button>
-                        <Button variant="primary">Edit</Button>
+                        <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
+                        <Button href ={`/change/${id}`}variant="primary">Edit</Button>
                         <Button onClick={() => {
                             deleteFav();
                             setVisiblity("none");

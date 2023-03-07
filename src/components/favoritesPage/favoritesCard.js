@@ -1,15 +1,20 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 import "./favoritesCard.css";
+import Context from "../../context/Context";
+
 const FavoritesCard = (props) => {
+    let data = useContext(Context);
     const [visiblity, setVisiblity] = useState("block")
     const {description,photos,price,location,id,user_id} = props.obj;
    
     const deleteFav = () => {
-        fetch(`http://localhost:3100/favorites/remove/${id}/1`, {method: 'DELETE',redirect: 'follow'})
+        fetch(`http://localhost:3100/favorites/remove/${id}/${data.id}`, {method: 'DELETE',redirect: 'follow'})
         .then(data => data.json())
         .then((json) => {
+            console.log("favorite item deleted")
             return json})
 
     }
@@ -24,7 +29,7 @@ const FavoritesCard = (props) => {
                        {price}
                     </Card.Text>
                     <div className='card_b'>
-                        <Button variant="primary">View Details</Button>
+                        <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
                         <Button onClick={() => {
                             deleteFav()
                             setVisiblity("none")
