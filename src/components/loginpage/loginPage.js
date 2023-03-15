@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    let data = useContext(Context);
+   const {userData,setUserData,isLogin,setIsLogin} = useContext(Context);
     
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
@@ -22,7 +22,7 @@ const LoginPage = () => {
         setPassword(e.target.value);
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async(e) => {
         e.preventDefault();
         let raw = JSON.stringify({
             "userName": username,
@@ -33,17 +33,21 @@ const LoginPage = () => {
             headers: { 'Content-Type': 'application/json' },
             body: raw
         };
-        fetch(`http://localhost:3100/authentication/login`, requestOptions)
+        
+        let userdata = await fetch(`http://localhost:3100/authentication/login`, requestOptions)
             .then(response => response.json())
-            .then(result => {
-                data.setUserData(result);
-                data.setIsLogin(true)
-                console.log("You've succesfully loged in");
-                navigate("/listings");
-        
-            })
+            .then(result => result[0])
             .catch(error => console.log('error', error));
-        
+            if (userdata) {
+                setUserData(userdata);
+                setIsLogin(true);
+                console.log(userData);
+                console.log(isLogin);
+                navigate("/listings");
+            }else {
+                alert("invalid username");
+            }
+            
     }
 
 

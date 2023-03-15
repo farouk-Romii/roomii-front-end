@@ -6,7 +6,7 @@ export default function ContextProvider({children}){
     
    
    
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState(null);
     const [isLogin,setIsLogin] = useState(false)
     const state = {
         userData,

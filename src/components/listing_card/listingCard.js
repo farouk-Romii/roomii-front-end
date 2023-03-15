@@ -2,25 +2,26 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import "./listing_card.css"
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import { Link } from "react-router-dom";
+import Context from "../../context/Context";
 function ListingCard(props) {
     
     const {description,photos,price,location,id,user_id} = props.obj;
-  
+    const {userData,setUserData,isLogin,setIsLogin} = useContext(Context);
     const addToFav=()=> {
         console.log("hey")
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId: 1,listId: id})
+            body: JSON.stringify({ userId: userData.id,listId: id})
         };
         fetch(`http://localhost:3100/favorites/add`,requestOptions)
         .then(response => response.json())
         .then(data => console.log("added to favorites"));
     }
    
-    console.log(props.obj)
+    
     return (
       <Card style={{ width: '20rem',margin: "10px 20px" }}>
         <Carousel wrap ={false} interval={null}>
@@ -44,7 +45,12 @@ function ListingCard(props) {
           </Card.Text>
           <div className='card_b'>
             <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
-            <Button onClick={() => {addToFav()}} variant="primary">add to favorites</Button>
+            {()=> { 
+              if (isLogin && userData.type === "Tenant"){
+                return (<Button onClick={() => {addToFav()}} variant="primary">add to favorites</Button>)
+              }
+            }
+            }
           </div>
           
         </Card.Body>

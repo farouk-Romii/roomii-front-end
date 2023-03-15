@@ -30,6 +30,7 @@ const SignUpPage = () => {
     }
     const handleType = (e) => {
         setType(e.target.value)
+        console.log(e.target.value)
         
     }
     const handleUsername = (e) => {

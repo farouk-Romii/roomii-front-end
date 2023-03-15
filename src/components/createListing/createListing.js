@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const CreateListingPage = () => {
-    let data = useContext(Context);
+    const {userData,setUserData,isLogin,setIsLogin} = useContext(Context);
     const navigate = useNavigate();
 
 
@@ -36,7 +36,7 @@ const CreateListingPage = () => {
             "photos": photos,
             "price": price,
             "location": location,
-            "userId": data.id,
+            "userId": userData.id,
         })
         const requestOptions = {
             method: 'POST',
@@ -46,6 +46,7 @@ const CreateListingPage = () => {
         fetch(`http://localhost:3100/room/add`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                
                 console.log("You've succesfully create a listing");
                 navigate("/myListings");
         

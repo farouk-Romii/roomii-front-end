@@ -6,11 +6,11 @@ import Context from "../../context/Context";
 
 
 const FavoritesPage =()=> {
-    let data = useContext(Context);
+    const {userData,setUserData,isLogin,setIsLogin} = useContext(Context);
     const [favs,setFavs] = useState(null);
 
     useEffect(()=>{
-        fetch(`http://localhost:3100/favorites/view/${data.id}`)
+        fetch(`http://localhost:3100/favorites/view/${userData.id}`)
         .then(data => data.json())
         .then((favs) => {
             console.log(favs);

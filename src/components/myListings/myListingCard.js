@@ -27,7 +27,7 @@ const MyListingCard = (props) => {
                     </Card.Text>
                     <div className='card_b'>
                         <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
-                        <Button href ={`/change/${id}`}variant="primary">Edit</Button>
+                        <Link to={`/change/${id}`}><Button variant="primary">Edit</Button></Link>
                         <Button onClick={() => {
                             deleteFav();
                             setVisiblity("none");

@@ -6,12 +6,12 @@ import "./favoritesCard.css";
 import Context from "../../context/Context";
 
 const FavoritesCard = (props) => {
-    let data = useContext(Context);
+    const {userData,setUserData,isLogin,setIsLogin} = useContext(Context);
     const [visiblity, setVisiblity] = useState("block")
     const {description,photos,price,location,id,user_id} = props.obj;
    
     const deleteFav = () => {
-        fetch(`http://localhost:3100/favorites/remove/${id}/${data.id}`, {method: 'DELETE',redirect: 'follow'})
+        fetch(`http://localhost:3100/favorites/remove/${id}/${userData.id}`, {method: 'DELETE',redirect: 'follow'})
         .then(data => data.json())
         .then((json) => {
             console.log("favorite item deleted")
