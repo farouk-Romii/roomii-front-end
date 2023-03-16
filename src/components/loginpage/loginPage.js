@@ -39,6 +39,7 @@ const LoginPage = () => {
             .then(result => result[0])
             .catch(error => console.log('error', error));
             if (userdata) {
+                console.log(userdata.type)
                 setUserData(userdata);
                 setIsLogin(true);
                 console.log(userData);
