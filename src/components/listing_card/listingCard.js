@@ -6,6 +6,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import Context from "../../context/Context";
 function ListingCard(props) {
+  const [visiblity,setVisiblity] = useState("block");
 
   const { description, photos, price, location, id, user_id } = props.obj;
   const { userData, setUserData, isLogin, setIsLogin } = useContext(Context);
@@ -20,7 +21,10 @@ function ListingCard(props) {
       .then(response => response.json())
       .then(data => console.log("added to favorites"));
   }
-
+  
+  const showAddToFavButton =  userData?.type !== "landlord" ? 'block' : 'none'
+  
+  
 
 
   return (
@@ -46,21 +50,17 @@ function ListingCard(props) {
         </Card.Text>
         <div className='card_b'>
           <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
-
-          <Button onClick={() => { 
-            if (isLogin && userData.type === "Tenant"){
-              addToFav() 
-              alert("room added")
-            }else if (isLogin && userData.type === "lanlord"){
-              alert("must be a Tanent to add")
-              }else {
-                alert("login to add")
-              }
-            }} variant="primary">add to favorites
+          <Button style ={{display: showAddToFavButton}} onClick={() => {
+            if (isLogin && userData.type === "Tenant") {
+              addToFav()
+              alert("room booked")
+            } else if (isLogin && userData.type === "lanlord") {
+              alert("must be a Tanent to book")
+            } else {
+              alert("login to book")
+            }
+          }} variant="primary">Book Room
           </Button>
-
-
-
         </div>
 
       </Card.Body>

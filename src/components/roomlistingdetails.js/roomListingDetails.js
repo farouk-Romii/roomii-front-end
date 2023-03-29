@@ -8,18 +8,18 @@ import Navbarsec from "../navBar/navBar";
 
 
 const RoomDetails = () => {
-    const {id} = useParams();
-    const [room,setRoom] = useState(null);
-  
-        fetch(`http://localhost:3100/room/view/${id}`)
-        .then(data=> data.json())
-        .then(room=> {
+    const { id } = useParams();
+    const [room, setRoom] = useState(null);
+
+    fetch(`http://localhost:3100/room/view/${id}`)
+        .then(data => data.json())
+        .then(room => {
             console.log(room);
             setRoom(room);
         })
-    
-    
-    return ( 
+
+
+    return (
         <div className="room-details">
             <Navbarsec />
             <Carousel>
@@ -45,17 +45,19 @@ const RoomDetails = () => {
                         alt="Third slide"
                     />
 
-                   
+
                 </Carousel.Item>
             </Carousel>
             <div className="des">
-                {room && room.description}
-                <br/>
                 {room && room.price}
+                <br />
+                Welcome to our charming suite! This apartment is newly renovated and we have curated stylish and comfortable furniture just for you. Enjoy a memory foam bed, rainfall shower, new kitchen, a quiet dining and relaxing living room. This home is equipped with AC/Heater, 1 car garage +bonus parking, and FREE in-unit washer and dryer.
+
+                All local beaches are within 3-5 miles. SOFI & The Forum within 5-7 miles. All amusement parks are 20-40 miles. Northrup Grumman 1.8 miles, Spacex 3.8 miles
             </div>
-        
-        </div> 
+
+        </div>
     );
 }
- 
+
 export default RoomDetails;

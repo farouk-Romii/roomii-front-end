@@ -32,8 +32,9 @@ const FavoritesCard = (props) => {
                         <Link to={`/room/${id}`}><Button variant="primary" >View Details</Button></Link>
                         <Button onClick={() => {
                             deleteFav()
-                            setVisiblity("none")
-                            }}variant="primary">remove</Button>
+                            setVisiblity("none");
+                            alert("reservation cancel")
+                            }}variant="primary">Cancel Booking</Button>
                     </div>
                 </Card.Body>
             </Card>

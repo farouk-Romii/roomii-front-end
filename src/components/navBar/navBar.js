@@ -26,8 +26,8 @@ function Navbarsec() {
             <Navbar.Brand href="/">Roomii</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link onClick={() => navigate("/")} >Home</Nav.Link>
-              <Nav.Link onClick={() => navigate("/listings")}>Linstings</Nav.Link>
-              <Nav.Link onClick={() => navigate("/myFavorites")}>myFavorites</Nav.Link>
+              <Nav.Link onClick={() => navigate("/listings")}>Listings</Nav.Link>
+              <Nav.Link onClick={() => navigate("/myFavorites")}>Reservations</Nav.Link>
               <Nav.Link onClick={handelLogout}>logout</Nav.Link>
               </Nav>
           </Container>
